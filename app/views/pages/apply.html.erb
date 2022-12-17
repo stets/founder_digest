@@ -1,11 +1,12 @@
 <%= render partial: "shared/heading", locals: {title: 'Apply to Founder Digest', tagline: 'Each submission is manually reviewed by our team within 24 hours.'} %>
 
+<%# "ternary" %>
+<% plan_name = params[:plan] || 'free' %>
+
 <div class="max-w-sm mx-auto">
     <%= form_for UserSubmission.new do |form| %>
-    <%# space-y-8 %>
         <div class="space-y-8">
-
-            <input type="hidden" name="plan" value="<%= params[:plan] %>">
+            <input type="hidden" name="user_submission[plan_name]" id="user_submission_plan_name" value="<%= plan_name %>">
 
             <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                 <div class="sm:col-span-3">
@@ -46,19 +47,20 @@
             <div class="mt-1">
                 <fieldset class="mt-6">
                 <legend class="contents text-base font-medium text-gray-900">What's your role?</legend>
+
                 <div class="mt-1 space-y-4">
                     <div class="flex items-center">
-                    <input id="push-everything" name="C-Suite" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                    <label for="push-everything" class="ml-3 block text-sm font-medium text-gray-700">C-Suite</label>
-                    </div>
-                    <div class="flex items-center">
-                    <input id="push-email" name="Founder" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                    <label for="push-email" class="ml-3 block text-sm font-medium text-gray-700">Founder</label>
-                    </div>
-                    <div class="flex items-center">
-                    <input id="push-nothing" name="Employee" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                    <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700">Employee</label>
-                    </div>
+                    <%= form.radio_button :job_role, "c_suite", class: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
+                    <%= form.label :job_role_c_suite, "C-Suite", class: "ml-3 block text-sm font-medium text-gray-700" %>
+                </div>
+                <div class="flex items-center">
+                    <%= form.radio_button :job_role, "founder", class: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
+                    <%= form.label :job_role_founder, "Founder", class: "ml-3 block text-sm font-medium text-gray-700" %>
+                </div>
+                <div class="flex items-center">
+                <%= form.radio_button :job_role, "employee", class: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
+                    <%= form.label :job_role_employee, "Employee", class: "ml-3 block text-sm font-medium text-gray-700" %>
+                </div>
                 </div>
                 </fieldset>
             </div>
