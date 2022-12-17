@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/', to: 'pages#dashboard'
-    get 'terms', to: 'pages#terms'
+    resources :user_submissions, only: [:update]
   end
 
   # admin panels

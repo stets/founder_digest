@@ -4,7 +4,8 @@ class Admin::PagesController < ApplicationController
     def terms
     end
 
-    def dashboard 
+    def dashboard
+      @user_submissions = UserSubmission.all
     end
   end
   
