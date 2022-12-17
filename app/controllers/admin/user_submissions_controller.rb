@@ -2,14 +2,12 @@ class Admin::UserSubmissionsController < ApplicationController
     before_action :set_user_submission, only: [:update]
     
     def update
-        #binding.break 
         @user_submission.update(user_submission_params)
-        #binding.break 
-        puts 'updated user!!!!!!!'
         redirect_to admin_path, notice: 'User submission updated successfully'
     end
 
     private
+
     def user_submission_params
         params.require(:user_submission).permit(:status)
     end
