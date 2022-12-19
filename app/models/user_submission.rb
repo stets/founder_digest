@@ -6,17 +6,32 @@ class UserSubmission < ApplicationRecord
     validates_presence_of :first_name, :last_name, :email, :website, :job_role, :text
 
     # callback!
-    after_update :send_mailer
+    after_update :finish_processing
 
     def name
         "#{first_name} #{last_name}"
     end
 
     # I'm a callback!
-    def send_mailer
-        puts "sending mailer!!"
-        UserSubmissionMailer.reject(self).deliver if status == 'Reject'
-        UserSubmissionMailer.accept(self).deliver if status == 'Accept'
+    # we don't want too many
+    # one call back that does a lot rather than 3-5 callbacks
+    def finish_processing
+        reject! if status == 'Reject'
+        accept! if status == 'Accept'
+    end
+
+    def reject!
+        UserSubmissionMailer.reject(self).deliver
+    end
+
+    def accept!
+        password = generate_password
+        created_user = User.create!(email: self.email, password: password)
+        UserSubmissionMailer.accept(self, created_user).deliver
+    end
+
+    def generate_password
+        SecureRandom.hex(10)
     end
 end
 

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  get 'apply', to: 'pages#apply' # new user application form
-  get 'start', to: 'pages#start' # new user onboarding
+  get 'apply', to: 'pages#apply', as: 'apply' # new user application form
+  get 'thanksalot', to: 'pages#thanks', as: 'thanks' # thanks_path
+  get 'start', to: 'pages#start', as: 'start' # new user onboarding
 
+  get '/magic_login', to: 'pages#magic_login', as: 'magic_login'
+  
+  # Note: named paths will be appended _path, eg apply_path, thanks_path, start_path
+  
   devise_for :users
   get 'logout', to: 'pages#logout', as: 'logout'
 

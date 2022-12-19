@@ -2,6 +2,14 @@
 
 <p>We're pleased to let you know that your FounderDigest application has been accepted!</p>
 
-<p>Get started here: << todo: add link >> </p>
+<p>
+    Get started <a class="underline" href="<%= ENV['base_url'] + '/magic_login?auth_code=' + @auth_code %>">here</a>: 
+    <ul>
+        <li>Username: <%= @email %></li>
+        <li>Password: <%= @password %></li>
+    </ul>
+    <br>
+    
+ </p>
 
 <h1 class="font-bold bg-green-400">oh yeah</h1>
