@@ -17,8 +17,12 @@ class PagesController < ApplicationController
     # need template here or redirect
     user = User.find_by(auth_code: params[:auth_code])
     # sign in function came with devise and JUST DOES IT, noice!
-    sign_in(user)
-    redirect_to start_path
+    if user
+      sign_in(user)
+      redirect_to start_path
+    else
+      redirect_to user_session_path, alert: 'You need to sign in first'
+    end
   end
 
   def logout

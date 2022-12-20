@@ -8,12 +8,13 @@
             <div class="flex gap-x-2">
             <%# inner col 1 %>
                 <div class="basis-1/6">
-                    <img src="https://via.placeholder.com/150" alt="">
+                    <%# <img src="https://via.placeholder.com/150" alt=""> %>
+                    <img src="https://logo.clearbit.com/<%# todo: fill in website %>" alt="">
                 </div>
             <%# inner col 2  %>
                 <div class="basis-5/6">
-                    <p class="text-lg"> {{Title}} </p>
-                    <p class="text-sm"> {{Description}} </p>
+                    <p class="text-lg"> <%= @project.title %> </p>
+                    <p class="text-sm"> <%= @project.description %> </p>
                 </div>
             </div>    
         </div>
