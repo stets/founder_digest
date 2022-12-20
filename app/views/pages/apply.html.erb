@@ -12,14 +12,14 @@
                 <div class="sm:col-span-3">
                 <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
                 <div class="mt-1">
-                    <%= form.text_field :first_name, placeholder: 'Elon', autocomplete: 'given-name', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+                    <%= form.text_field :first_name, required: true, placeholder: 'Elon', autocomplete: 'given-name', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
                 </div>
                 </div>
 
                 <div class="sm:col-span-3">
                 <label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
                 <div class="mt-1">
-                <%= form.text_field :last_name, placeholder: 'Musk', autocomplete: 'given-name', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+                <%= form.text_field :last_name, required: true, placeholder: 'Musk', autocomplete: 'given-name', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
 
                 </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="sm:col-span-6">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
                 <div class="mt-1">
-                <%= form.text_field :email, type: 'email', autocomplete: 'email', placeholder: 'elon@tesla.com', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+                <%= form.text_field :email, type: 'email', autocomplete: 'email', required: true,  placeholder: 'elon@tesla.com', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
 
                 </div>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="sm:col-span-6">
                 <label for="website" class="block text-sm font-medium text-gray-700">Company Website</label>
                 <div class="mt-1">
-                    <%= form.text_field :website, type: 'url', autocomplete: 'email', placeholder: 'https://tesla.com', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+                    <%= form.text_field :website, type: 'url', autocomplete: 'email', required: true,  placeholder: 'https://tesla.com', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
                 </div>
                 </div>
 
@@ -50,7 +50,7 @@
 
                 <div class="mt-1 space-y-4">
                     <div class="flex items-center">
-                    <%= form.radio_button :job_role, "c_suite", class: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
+                    <%= form.radio_button :job_role, "c_suite", required: true, class: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
                     <%= form.label :job_role_c_suite, "C-Suite", class: "ml-3 block text-sm font-medium text-gray-700" %>
                 </div>
                 <div class="flex items-center">
