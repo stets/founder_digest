@@ -34,37 +34,37 @@
 <%# end main box area %>
 
 <%# newsletters %>
-<div class="p-5 mx-auto max-w-3xl space-y-2 ">
+<div class="p-5 mx-auto max-w-3xl space-y-8">
 
-    <% 5.times do%>
-    <div class="flex">
-    <%# col 1  %>
-    <div class="basis-1/2">
-        <div class="flex gap-x-2">
-        <%# inner col 1 %>
-            <div class="basis-1/6">
-                <img src="https://via.placeholder.com/150" alt="">
+    <% @other_projects.each do |other_project| %>
+        <div class="flex border border-2 border-dashed p-2">
+        <%# col 1  %>
+        <div class="basis-1/2">
+            <div class="flex gap-x-2">
+            <%# inner col 1 %>
+                <div class="basis-1/6">
+                    <img src="https://logo.clearbit.com/<%= other_project.website %>" alt="">
+                </div>
+            <%# inner col 2  %>
+                <div class="basis-5/6">
+                    <p class="text-lg"> <%= other_project.title %> </p>
+                    <p class="text-xs"> <%= other_project.description %> (<%= other_project.website %>) </p>
+                </div>
+            </div>    
+        </div>
+        
+        <%# col 2  %>
+        <div class="basis-1/2 text-right">
+            <div class="relative flex items-start py-4">
+                <div class="min-w-9 flex-1 text-sm">
+                    <label for="subscribed" class="font-medium text-gray-700">{{Subscribed Status}}</label>
+                </div>
+                <div class="ml-3 flex h-5 items-center">
+                    <input id="subscribed" aria-describedby="subscribed-description" name="subscribed" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-brand-orange focus:ring-brand-orange-dark">
+                </div>
+                </div>
             </div>
-        <%# inner col 2  %>
-            <div class="basis-5/6">
-                <p class="text-lg"> {{Title}} </p>
-                <p class="text-sm"> {{Description}} {{ URL }} </p>
-            </div>
-        </div>    
-    </div>
-    
-    <%# col 2  %>
-    <div class="basis-1/2 text-right">
-        <div class="relative flex items-start py-4">
-            <div class="min-w-9 flex-1 text-sm">
-                <label for="subscribed" class="font-medium text-gray-700">{{Subscribed Status}}</label>
-            </div>
-            <div class="ml-3 flex h-5 items-center">
-                <input id="subscribed" aria-describedby="subscribed-description" name="subscribed" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-brand-orange focus:ring-brand-orange-dark">
-            </div>
-            </div>
-          </div>
-    </div>
+        </div>
     <% end %>
     
 </div>
