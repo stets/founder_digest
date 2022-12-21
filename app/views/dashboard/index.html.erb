@@ -37,6 +37,7 @@
 <div class="p-5 mx-auto max-w-3xl space-y-8">
 
     <% @other_projects.each do |other_project| %>
+    
         <div class="flex border border-2 border-dashed p-2">
         <%# col 1  %>
         <div class="basis-1/2">
@@ -56,17 +57,32 @@
         <%# col 2  %>
         <div class="basis-1/2 text-right">
             <div class="relative flex items-start py-4">
+            <% subscriber_endpoint = Subscriber.new %>
+            <%= form_for subscriber_endpoint do |form| %>
+            
                 <div class="min-w-9 flex-1 text-sm">
-                    <label for="subscribed" class="font-medium text-gray-700">{{Subscribed Status}}</label>
+                    <label for="<%= other_project.id %>_subscribed_status" class="font-medium text-gray-700">{{Subscribed Status}}</label>
                 </div>
                 <div class="ml-3 flex h-5 items-center">
-                    <input id="subscribed" aria-describedby="subscribed-description" name="subscribed" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-brand-orange focus:ring-brand-orange-dark">
+                    <input onchange="checkboxChanged()"  id="<%= other_project.id %>_subscribed_status" aria-describedby="subscribed-description" name="subscribed" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-brand-orange focus:ring-brand-orange-dark">
                 </div>
-                </div>
+            <% end %>
             </div>
         </div>
+        </div>
     <% end %>
-    
 </div>
 
 <%# newsletters end %>
+
+
+<script type="text/javascript">
+    // option a - grab all elements and attach listeners
+    // option b - attach a change event to every check box directly
+    // $.ajax({})
+
+    function checkboxChanged() {
+        console.log('checkbox changed!');
+    }
+
+</script>
