@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'logout', to: 'pages#logout', as: 'logout'
 
+  # this is for payments
   resources :subscribe, only: [:index]
+
   # resources :dashboard, only: [:index]
   get 'dashboard', to: 'dashboard#index'
   get 'stakeholder_updates/new', to: 'stakeholder_updates#new'
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
 
   # POST to Projects
   resources :projects, only: [:create, :update]
+
+  resources :subscribers, only: [:create, :destroy]
 
   # static pages
   pages = %w(

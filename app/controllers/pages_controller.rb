@@ -9,7 +9,8 @@ class PagesController < ApplicationController
   end
 
   def start
-    @project = current_user.projects.first
+    @project = current_user.default_project
+    
     if (@project.title? && @project.description?)
       redirect_to dashboard_path, notice: "You've already created your project."
     end
