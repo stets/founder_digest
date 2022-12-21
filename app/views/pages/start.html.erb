@@ -7,7 +7,7 @@
 <%= render partial: "shared/heading", locals: {title: 'Welcome to Founder Digest!', tagline: 'Congrats on being accepted to our private community. <br> Provide just a few more details below to begin subscribing to other founder stakeholder updates.</p>'} %>
 
 <div class="max-w-sm mx-auto">
-    <%= form_for Project.new do |form| %>
+    <%= form_for @project do |form| %>
 
     <div class="space-y-8">
         <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">            

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :user_submissions, only: [:create]
 
   # POST to Projects
-  resources :projects, only: [:create]
+  resources :projects, only: [:create, :update]
 
   # static pages
   pages = %w(
