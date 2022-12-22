@@ -1,7 +1,19 @@
-<%= render partial: "shared/heading", locals: {title: 'Last Update', tagline: 'Review your latest update'} %>
+<%= render partial: "shared/heading", locals: {title: @stake_holder_update.title , tagline: 'Review and confirm your update below'} %>
 
-<div class="max-w-3xl mx-auto">
-    <%= @stake_holder_update.content %>
+
+<div class="max-w-3xl mx-auto ">
+
+    <div class="border p-4 border-2 border-dashed">
+        <%= @stake_holder_update.content %>
+    </div>
+
+    <%= form_for @stake_holder_update do |form| %>
+
+        
+        <%= form.text_field :confirmed_at, type: "hidden", value: DateTime.now() %>
+
+        <button type="submit" class="mt-4 inline-flex justify-center rounded-md border border-transparent bg-brand-orange py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-orange-dark focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Confirm and Share</button>
+    <% end %>
 </div>
 
 

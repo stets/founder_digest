@@ -2,13 +2,21 @@
 
 <div class="max-w-3xl mx-auto">
     <%= form_for @stake_holder_update do |form| %>
+
+    <div class="mb-4">
+      <label for="email" class="block text-sm font-medium text-gray-700">Title / Headline</label>
+      <div class="mt-1">
+      <%= form.text_field :title, required: true,  placeholder: 'December 22, Newsletter', class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+      <small class="mb-4">This will be the clickable link in your subscriber's inbox</small>
+    </div>
+
       <div class="field">
         <%= form.rich_text_area :content %>
       </div>
     
 
     <div class="mt-2 text-left">
-        <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-brand-orange py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-orange-dark focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Share</button>
+        <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-brand-orange py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brand-orange-dark focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Preview and Confirm</button>
     </div>
     <% end %>
 </div>

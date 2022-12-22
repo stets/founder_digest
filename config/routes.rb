@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # get 'stakeholder_updates/new', to: 'stakeholder_updates#new'
   # post 'stakeholder_updates', to: 'stakeholder_updates#create'
   
-  resources :stake_holder_updates, only: [:new, :show, :create]
+  resources :stake_holder_updates, only: [:new, :show, :create, :update]
   
 
   resources :account, only: [:index, :update]
