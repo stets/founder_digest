@@ -16,7 +16,8 @@
     </div>
     <div class="basis-1/2 text-right">
       <p>{{ Num }} Subscribers</p>
-      <p><a href="/stakeholder_updates/new" class="text-brand-orange underline">Share update</a></p>
+      <p><a href="<%= stake_holder_update_path(current_user.stake_holder_updates.last) %>" class="text-brand-orange underline">View Last</a> |
+      <a href="<%= new_stake_holder_update_path %>" class="text-brand-orange underline">Share update</a></p>
       <p><a href="" class="text-brand-blue underline">Edit subscription</a></p>
     </div>
   </div>

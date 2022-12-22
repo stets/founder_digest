@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # INDEX (show all), NEW (create 1), EDIT, SHOW (1), UPDATE, DESTROY
   root 'pages#home'
   get 'apply', to: 'pages#apply', as: 'apply' # new user application form
   get 'thanksalot', to: 'pages#thanks', as: 'thanks' # thanks_path
@@ -16,7 +17,12 @@ Rails.application.routes.draw do
 
   # resources :dashboard, only: [:index]
   get 'dashboard', to: 'dashboard#index'
-  get 'stakeholder_updates/new', to: 'stakeholder_updates#new'
+
+
+  # get 'stakeholder_updates/new', to: 'stakeholder_updates#new'
+  # post 'stakeholder_updates', to: 'stakeholder_updates#create'
+  
+  resources :stake_holder_updates, only: [:new, :show, :create]
   
 
   resources :account, only: [:index, :update]
