@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
   def index
     @project = current_user.default_project
     # projects that aren't ours and have the scope ready
-    @other_projects = Project.ready.except(@project)
+    @other_projects = Project.except(@project).ready
   end
 
   private
