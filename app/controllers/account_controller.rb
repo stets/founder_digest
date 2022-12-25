@@ -20,7 +20,8 @@ class AccountController < ApplicationController
   def set_flashes
 
     if params[:subscribed] == 'true' # comes from success URL in stripe::checkout::session
-        current_user.delay.set_stripe_subscription
+        #current_user.delay.set_stripe_subscription
+        current_user.set_stripe_subscription
         flash.now[:notice] = 'Your account is now active!'
     end
 

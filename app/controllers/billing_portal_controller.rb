@@ -21,7 +21,7 @@ class BillingPortalController < ApplicationController
   def begin_subscription
     session = Stripe::Checkout::Session.create({
       customer: current_user.stripe_customer_id,
-      payment_method_types: ['card', 'us_bank_account'],
+      payment_method_types: ['card'],
       mode: 'subscription',
       allow_promotion_codes: false,
       line_items: [{

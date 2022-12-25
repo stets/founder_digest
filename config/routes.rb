@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   authenticated :user, -> user { user.admin? } do
     namespace :admin do
       get '/', to: 'pages#dashboard'
-      resources :user_submission, only: [:update]
+      resources :user_submissions, only: [:update]
     end
     
   end
