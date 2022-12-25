@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   get 'logout', to: 'pages#logout', as: 'logout'
+  get 'login', to: redirect(path: '/users/sign_in') # use path to persist parameters from redirect
 
   # this is for payments
   resources :subscribe, only: [:index]
@@ -22,7 +23,11 @@ Rails.application.routes.draw do
   # get 'stakeholder_updates/new', to: 'stakeholder_updates#new'
   # post 'stakeholder_updates', to: 'stakeholder_updates#create'
   
-  resources :stake_holder_updates, only: [:new, :show, :create, :update]
+  resources :stake_holder_updates, only: [:new, :show, :create, :update, :edit]
+  
+  resources :updates, only: [:show] # -> as: 'update'
+  # above is the same as below, params[id] 
+  # get 'updates/:id', to: 'updates#show', as: 'update'
   
 
   resources :account, only: [:index, :update]
@@ -48,21 +53,18 @@ Rails.application.routes.draw do
   end
 
 
-  namespace :admin do
-    get '/', to: 'pages#dashboard'
-    resources :user_submissions, only: [:update]
-  end
-
-  # admin panels
-  # authenticated :user, -> user { user.admin? } do
-  #   namespace :admin do
-  #     resources :dashboard, only: [:index]
-  #     resources :impersonations, only: [:new]
-  #     resources :users, only: [:edit, :update, :destroy]
-  #   end
-
-  #   # convenience helper
-  #   get 'admin', to: 'admin/dashboard#index'
+  # namespace :admin do
+  #   get '/', to: 'pages#dashboard'
+  #   resources :user_submissions, only: [:update]
   # end
+
+  # admin panel
+  authenticated :user, -> user { user.admin? } do
+    namespace :admin do
+      get '/', to: 'pages#dashboard'
+      resources :user_submission, only: [:update]
+    end
+    
+  end
   
 end

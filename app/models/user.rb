@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   include Signupable
-  include Onboardable
   include Billable
 
   scope :subscribed, -> { where(paying_customer: true) }
+
 
   has_many :projects, dependent: :destroy
   has_many :subscribers,  dependent: :destroy
@@ -24,6 +24,10 @@ class User < ApplicationRecord
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def finished_onboarding?
+    stripe_subscription_id?
   end
 
 end

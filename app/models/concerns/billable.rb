@@ -9,6 +9,7 @@ module Billable
   def setup_stripe_customer
     customer = Stripe::Customer.create({
       email: self.email,
+      name: self.name,
       metadata: {
         external_id: self.id
       }
@@ -26,5 +27,15 @@ module Billable
     })
     subscription_id = cust.subscriptions.first.id
     update(stripe_subscription_id: subscription_id)
+  end
+
+  def pro_plan?
+    plan_name == 'pro'
+  end
+
+  def has_started_subscription?
+    return true unless pro_plan?
+    
+    stripe_subscription_id?
   end
 end

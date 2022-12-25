@@ -1,10 +1,15 @@
 class ProjectsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_project!
+    before_action :maybe_subscribe
 
     def update
         @project.update!(project_params)
-        redirect_to dashboard_path
+        if current_user.pro_plan?
+            redirect_to subscribe_index_path
+        else
+            redirect_to dashboard_path
+        end
     end
 
     private

@@ -47,7 +47,7 @@
       <div class="basis-1/2 text-right">
         <div class="relative flex items-start py-4">
             <div class="min-w-0 flex-1 text-sm">
-              <label for="<%= other_project.id %>_subscribed_status" class="font-medium text-gray-700">{{ Subscribed Status }}</label>
+              <label for="<%= other_project.id %>_subscribed_status" class="font-medium text-gray-700">Subscribe</label>
             </div>
             <div class="ml-3 flex h-5 items-center">
               <% subscriber = Subscriber.find_by(user_id: current_user.id, project_id: other_project.id) %>

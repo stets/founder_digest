@@ -1,13 +1,11 @@
-# link to each of them, including founder's contact details 
-
-
 <p>hey <%= @name %>,</p>
 
 <p>Below are the latest updates from <%= @stakeholder_updates.count %> of the Founder Digests you've subscribed to. </p>
 
 <ul>
     <%= @stakeholder_updates.each do |su| %>
-    <li> <%= su.title %> by <%= su.user.name %> (<%= su.user.email %>)</li>
+
+    <li> <%= link_to su.title, update_url(su.uuid) %> by <%= su.user.name %> (<%= su.user.email %>)</li>
     <% end %>
     <li></li>
 </ul>
