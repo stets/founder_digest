@@ -5,10 +5,11 @@ class BillingPortalController < ApplicationController
   def create
     url = current_user.finished_onboarding? ? modify_subscription : begin_subscription
 
-    respond_to do |format|
-      format.html { redirect_to url, allow_other_host: true }
-      format.json { render json: { url: url } }
-    end
+    redirect_to url, allow_other_host: true, status: :see_other
+    #respond_to do |format|
+    #  format.html { redirect_to url, allow_other_host: true }
+    #  format.json { render json: { url: url } }
+    #end
   end
 
   def destroy
@@ -31,6 +32,8 @@ class BillingPortalController < ApplicationController
       success_url: "#{ENV['base_url']}#{account_index_path}?subscribed=true",
       cancel_url: "#{ENV['base_url']}#{account_index_path}?aborted=true"
     })
+    
+    puts "session url #{session.url}"
 
     session.url
   end
@@ -41,6 +44,8 @@ class BillingPortalController < ApplicationController
       customer: current_user.stripe_customer_id,
       return_url: "#{ENV['base_url']}#{account_index_path}?updated=true"
     })
+
+    puts "session url #{session.url}"
 
     session.url
   end

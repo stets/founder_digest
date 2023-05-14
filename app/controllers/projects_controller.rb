@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
     before_action :maybe_subscribe
 
     def update
+        puts "project params"
+        puts project_params
         @project.update!(project_params)
         if current_user.pro_plan?
             redirect_to subscribe_index_path
